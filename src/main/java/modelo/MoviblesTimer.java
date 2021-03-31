@@ -44,4 +44,37 @@ public class MoviblesTimer extends AnimationTimer {
       return pausado;
    }
    
+   /**
+    * Inicia una cantidad indefinida de timers
+    * @param timers 
+    */
+   public static void startTimers(AnimationTimer... timers) {
+      for (AnimationTimer t : timers) {
+         t.start();
+      }
+   }
+   
+   /**
+    * Para una cantidad indefinida de timers
+    * @param timers
+    */
+   public static void stopTimers(AnimationTimer... timers) {
+      for (AnimationTimer t : timers) {
+         t.stop();
+      }
+   }
+   
+   /**
+    * Retorna true si todos los timers están pausados. False si al menos uno no.
+    * @param timers
+    * @return boolean
+    */
+   public static boolean estanPausados(AnimationTimer... timers) {
+      boolean retorno = true;
+      for (AnimationTimer t : timers) {
+         if (!((MoviblesTimer)t).isPausado())
+            retorno = false;
+      }
+      return retorno;
+   }
 }

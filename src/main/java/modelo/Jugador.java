@@ -20,6 +20,7 @@ public class Jugador extends Rectangle implements IMovible {
       J2,
       CPU // aun en desuso
    }
+   
    /**
     * Un objeto Jugador es un Rectangle
     * @param tipo J1, J2, CPU (determina el lado del jugador)
@@ -32,14 +33,6 @@ public class Jugador extends Rectangle implements IMovible {
       puntaje = 0;
       vy = 0;
       setSprite();
-   }
-   
-   /**
-    * Devuelve el puntaje actual del jugador
-    * @return puntaje
-    */
-   public int getPuntaje() {
-      return puntaje;
    }
    
    /**
@@ -57,18 +50,12 @@ public class Jugador extends Rectangle implements IMovible {
       setSprite();
    }
    
-   private void setSprite() {
-      switch (tipo) {
-         case J1:
-            setX(20);
-            break;
-         case J2:
-            setX(escena.getWidth() - 20 - getWidth());
-            break;
-         default:
-            break;
-      }
-      setY(escena.getHeight() / 2 - getHeight() / 2);
+   /**
+    * Devuelve el puntaje actual del jugador
+    * @return puntaje
+    */
+   public int getPuntaje() {
+      return puntaje;
    }
    
    /**
@@ -98,5 +85,19 @@ public class Jugador extends Rectangle implements IMovible {
     */
    public void resetPuntaje() {
       puntaje = 0;
+   }
+   
+   private void setSprite() {
+      switch (tipo) {
+         case J1:
+            setX(20);
+            break;
+         case J2:
+            setX(escena.getWidth() - 20 - getWidth());
+            break;
+         default:
+            break;
+      }
+      setY(escena.getHeight() / 2 - getHeight() / 2);
    }
 }

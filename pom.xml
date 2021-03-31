@@ -2,7 +2,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>nisenare</groupId>
-    <artifactId>Pong</artifactId>
+    <artifactId>PongMacPC</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
     <properties>
@@ -14,11 +14,13 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
+            <classifier>mac</classifier>
             <version>13</version>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-graphics</artifactId>
+            <classifier>mac</classifier>
             <version>13</version>
         </dependency>
     </dependencies>

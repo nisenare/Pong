@@ -6,6 +6,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import modelo.Jugador.TipoJugador;
+import static modelo.MoviblesTimer.*;
 
 /**
  *
@@ -22,6 +23,10 @@ public class Pong {
    private MoviblesTimer timer1,
          timer2, timer3, timer4;
    
+   /**
+    * Juego que requiere referencia al stage principal
+    * @param principal 
+    */
    public Pong(Stage principal) {
       //ventana
       principal.setTitle("Pong");
@@ -37,10 +42,7 @@ public class Pong {
       //juego
       newJuego();
    }
-   
-   /**
-    * Setea los objetos desde el inicio
-    */
+
    private void newJuego() {
       jugador1 = new Jugador(TipoJugador.J1, escena);
       jugador2 = new Jugador(TipoJugador.J2, escena);
@@ -52,35 +54,19 @@ public class Pong {
       timer2 = new MoviblesTimer(jugador2);
       timer3 = new MoviblesTimer(pelota);
       timer4 = new MoviblesTimer(marcador);
-      startTimers();
+      startTimers(timer1, timer2, timer3, timer4);
    }
    
    private void pausaJuego() {
-      if (timer1.isPausado() && timer2.isPausado()
-         && timer3.isPausado() && timer4.isPausado()) {
-         startTimers();
-      } else {
-         stopTimers();
-      }
+      if (estanPausados(timer1, timer2, timer3, timer4))
+         startTimers(timer1,timer2,timer3,timer4);
+      else
+         stopTimers(timer1,timer2,timer3,timer4);
    }
    
    private void resetJuego() {
-      stopTimers(); //que el recolector de basura se apiado de estos
+      stopTimers(timer1, timer2, timer3, timer4); //que el recolector de basura se apiado de estos
       newJuego();
-   }
-   
-   private void startTimers() {
-      timer1.start();
-      timer2.start();
-      timer3.start();
-      timer4.start();
-   }
-   
-   private void stopTimers() {
-      timer1.stop();
-      timer2.stop();
-      timer3.stop();
-      timer4.stop();
    }
    
    // -------- EVENTOS --------

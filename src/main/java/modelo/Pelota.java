@@ -30,28 +30,6 @@ public class Pelota extends Rectangle implements IMovible {
       setVelocidad(velocidad);
    }
    
-   private void setDirInicial(String lado) {
-      switch (lado) {
-         case "L":
-            direccion = Math.PI;
-            break;
-         case "R":
-            direccion = 0;
-         default:
-            break;
-      }
-   }
-   
-   private void setVelocidad(double velocidad) {
-      vx = velocidad * Math.cos(direccion);
-      vy = velocidad * Math.sin(direccion);
-   }
-   
-   private void setPosInicial() {
-      setY(escena.getHeight() / 2 - getHeight() / 2);
-      setX(escena.getWidth() / 2 - getWidth() / 2);
-   }
-   
    /**
     * Modela la física de la pelota
     */
@@ -118,5 +96,27 @@ public class Pelota extends Rectangle implements IMovible {
       }
       setX(posNuevaX);
       setY(posNuevaY);
+   }
+   
+   private void setDirInicial(String lado) {
+      switch (lado) {
+         case "L":
+            direccion = Math.PI;
+            break;
+         case "R":
+            direccion = 0;
+         default:
+            break;
+      }
+   }
+   
+   private void setVelocidad(double velocidad) {
+      vx = velocidad * Math.cos(direccion);
+      vy = velocidad * Math.sin(direccion);
+   }
+   
+   private void setPosInicial() {
+      setY(escena.getHeight() / 2 - getHeight() / 2);
+      setX(escena.getWidth() / 2 - getWidth() / 2);
    }
 }
